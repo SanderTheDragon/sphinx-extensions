@@ -2,11 +2,13 @@
 #
 # SPDX-License-Identifier: MIT
 
-import os
 import sys
 
+from pathlib import Path
 
-sys.path.insert(0, os.path.abspath('./extensions'))
+
+sys.path.insert(0, str(Path(__file__).parent.parent / 'extensions'))
+print(str(Path(__file__).parent.parent / 'extensions'))
 
 # Sphinx settings
 author = 'SanderTheDragon'
