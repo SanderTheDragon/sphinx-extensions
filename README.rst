@@ -30,10 +30,3 @@ Other files, like configuration files are licensed under `CC0-1.0 <https://spdx.
 .. hint::
 
    This documentation is `REUSE <https://reuse.software>`_ compliant.
-
-.. toctree::
-   :hidden:
-
-   codeblockbuttons.rst
-   extralexers.rst
-   mappedlinkrole.rst
