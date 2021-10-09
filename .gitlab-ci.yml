@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2021 SanderTheDragon <sanderthedragon@zoho.com>
+#
+# SPDX-License-Identifier: CC0-1.0
+
+image: python:3.9-alpine
+
+test:
+  stage: test
+  script:
+    - pip install -r requirements.txt
+    - sphinx-build -b html docs public
+  rules:
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
+
+pages:
+  stage: deploy
+  script:
+    - pip install -r requirements.txt
+    - sphinx-build -b html docs public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
