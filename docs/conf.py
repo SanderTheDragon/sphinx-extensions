@@ -36,7 +36,7 @@ autosectionlabel_maxdepth = 3
 
 # Role settings
 role_mapping = {
-    'extension': '/{}.html',
+    'extension': '/sphinx-extensions/{}.html',
 
     'license': 'https://spdx.org/licenses/{}.html',
     'wikipedia': 'https://en.wikipedia.org/wiki/{}',
