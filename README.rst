@@ -14,10 +14,9 @@ These are some `Sphinx <https://www.sphinx-doc.org>`_ extensions I wrote, feel f
 ************
 Installation
 ************
-The extensions can with :program:`pip`.
+The extensions can with **pip**.
 
 .. code-block:: sh
-   :class: cb-noview
 
    python3 -m pip install sanderthedragon-sphinxext
 
