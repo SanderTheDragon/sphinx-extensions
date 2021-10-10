@@ -23,7 +23,7 @@ The extensions can with **pip**.
 ***********
 Source Code
 ***********
-The source hosted on GitLab is available `here <https://gitlab.com/SanderTheDragon/sphinx-extensions>`_.
+The source code is hosted on `GitLab <https://gitlab.com/SanderTheDragon/sphinx-extensions>`_.
 
 *********
 Changelog
