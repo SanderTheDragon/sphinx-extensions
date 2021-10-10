@@ -18,7 +18,17 @@ The extensions can with **pip**.
 
 .. code-block:: sh
 
-   python3 -m pip install sanderthedragon-sphinxext
+   pip3 install sanderthedragon-sphinxext
+
+***********
+Source Code
+***********
+The source hosted on GitLab is available `here <https://gitlab.com/SanderTheDragon/sphinx-extensions>`_.
+
+*********
+Changelog
+*********
+Changelog is available `here <https://sanderthedragon.gitlab.io/sphinx-extensions/changelog.html>`_.
 
 *******
 License
@@ -29,4 +39,4 @@ Other files, like configuration files are licensed under `CC0-1.0 <https://spdx.
 
 .. hint::
 
-   This documentation is `REUSE <https://reuse.software>`_ compliant.
+   This project is `REUSE <https://reuse.software>`_ compliant.

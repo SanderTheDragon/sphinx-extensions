@@ -8,7 +8,7 @@ from typing import Any, Optional
 from docutils.parsers.rst.states import Inliner
 from docutils import nodes
 from sphinx.application import Sphinx
-from sphinx.util import nodes as nodesutil
+from sphinx.util import logging, nodes as nodesutil
 
 
 def make_link(name: str, rawtext: str, text: str, lineno: int, inliner: Inliner,
@@ -61,6 +61,11 @@ def setup(app: Sphinx) -> None:
     for ( key, value ) in role_mapping.items():
         item_mapping = config.get(key + '_mapping', {})
         if value is None:
+            if len(item_mapping.keys()) == 0:
+                logger = logging.getLogger('mappedlinkrole')
+                logger.warning(f'"{key}" is defined as `None`, but no mapping' \
+                                ' is defined')
+
             app.add_role(key, partial(make_link, mapping=item_mapping))
         else:
             app.add_role(key, partial(make_link, mapping=item_mapping,

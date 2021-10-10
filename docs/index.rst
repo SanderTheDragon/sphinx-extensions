@@ -19,7 +19,12 @@ The extensions can with :program:`pip`.
 .. code-block:: sh
    :class: cb-noview
 
-   python3 -m pip install sanderthedragon-sphinxext
+   pip3 install sanderthedragon-sphinxext
+
+*********
+Changelog
+*********
+Changelog is available `here <https://sanderthedragon.gitlab.io/sphinx-extensions/changelog.html>`_.
 
 *******
 License
@@ -30,7 +35,7 @@ Other files, like configuration files are licensed under :license:`CC0-1.0`.
 
 .. hint::
 
-   This documentation is :extern:`REUSE` compliant.
+   This project is :extern:`REUSE` compliant.
 
 .. toctree::
    :hidden:
@@ -38,3 +43,7 @@ Other files, like configuration files are licensed under :license:`CC0-1.0`.
    codeblockbuttons.rst
    extralexers.rst
    mappedlinkrole.rst
+
+   changelog.rst
+
+   GitLab Repository <https://gitlab.com/SanderTheDragon/sphinx-extensions>
