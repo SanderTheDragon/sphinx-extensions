@@ -2,7 +2,6 @@
 #
 # SPDX-License-Identifier: MIT
 
-import importlib.metadata
 import os
 import sys
 
