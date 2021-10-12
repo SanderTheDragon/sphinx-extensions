@@ -2,6 +2,8 @@
 #
 # SPDX-License-Identifier: MIT
 
+import importlib.metadata
+import os
 import sys
 
 from pathlib import Path
@@ -34,8 +36,13 @@ autosectionlabel_prefix_document = True
 autosectionlabel_maxdepth = 3
 
 # Role settings
+role_mapping_root = '/'
+if os.environ.get('GITLAB_CI', 'false').lower() == 'true':
+    role_mapping_root = '/sphinx-extensions/'
+
 role_mapping = {
-    'extension': '/sphinx-extensions/{}.html',
+    'extension': role_mapping_root + '{}.html',
+    'changelog': role_mapping_root + 'changelog.html',
 
     'license': 'https://spdx.org/licenses/{}.html',
     'wikipedia': 'https://en.wikipedia.org/wiki/{}',

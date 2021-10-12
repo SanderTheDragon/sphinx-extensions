@@ -24,7 +24,7 @@ The extensions can with :program:`pip`.
 *********
 Changelog
 *********
-Changelog is available `here <https://sanderthedragon.gitlab.io/sphinx-extensions/changelog.html>`_.
+Changelog is available :changelog:`here`.
 
 *******
 License
