@@ -90,6 +90,15 @@ function addControls(element) {
             window.open(url);
         });
     }
+
+    // Make the scroll area large enough for the buttons to not overlay the code
+    const buttonCount = element.getElementsByClassName("cb-button").length;
+    if (buttonCount > 0) {
+        const position = element.innerHTML.indexOf('\n');
+        element.innerHTML = element.innerHTML.slice(0, position)
+                          + `<span class="cb-pad cb-pad-${buttonCount}"></span>`
+                          + element.innerHTML.slice(position);
+    }
 }
 
 // Reset the copy button from success (or error) to normal

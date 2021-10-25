@@ -7,6 +7,11 @@ Changelog
 #########
 
 =======
+1.0.0b3
+=======
+Added a ``<span>`` to increase the width of the ``code-block`` scroll area, this way the buttons will not overlay the code.
+
+=======
 1.0.0b2
 =======
 Added a warning to :extension:`Mapped Link Role` for when a role defined as ``None`` has no mapping defined.
