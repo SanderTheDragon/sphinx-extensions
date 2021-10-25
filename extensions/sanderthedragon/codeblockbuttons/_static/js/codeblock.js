@@ -96,8 +96,9 @@ function addControls(element) {
     if (buttonCount > 0) {
         const position = element.innerHTML.indexOf('\n');
         element.innerHTML = element.innerHTML.slice(0, position)
-                          + `<span class="cb-pad cb-pad-${buttonCount}"></span>`
-                          + element.innerHTML.slice(position);
+                            + `<span class="cb-pad cb-pad-${buttonCount}">`
+                            + `</span>`
+                            + element.innerHTML.slice(position);
     }
 }
 
