@@ -70,6 +70,7 @@ function addControls(element) {
                                 `#${element.id} > pre`);
         setSVG(copyButton, "copy");
         setTooltip(copyButton, "Copy");
+
         element.appendChild(copyButton);
     }
 
@@ -78,12 +79,22 @@ function addControls(element) {
         let viewButton = document.createElement("div");
         viewButton.classList.add("cb-button");
         viewButton.id = "cb-view";
+        viewButton.setAttribute("data-view-id", element.id);
         setSVG(viewButton, "code");
         setTooltip(viewButton, "View");
+
         element.appendChild(viewButton);
 
-        // Create a blob from the content of the code block, and then open it
-        viewButton.addEventListener("click", function() {
+        // Add handler for view buttons
+        element.addEventListener("click", function(event) {
+            let target = event.target;
+            while (target && target.id != "cb-view") {
+                target = target.parentElement;
+            }
+
+            // Create a blob from the content of the code block, and then open it
+            const id = target.getAttribute("data-view-id");
+            const element = document.getElementById(id);
             const data = element.querySelector("pre").innerText;
             const file = new Blob([ data ], { type: "text/plain" });
             const url = URL.createObjectURL(file);

@@ -7,6 +7,11 @@ Changelog
 #########
 
 =======
+1.0.0b4
+=======
+Fixed the view button for :extension:`Code Block Buttons`.
+
+=======
 1.0.0b3
 =======
 Added a ``<span>`` to increase the width of the ``code-block`` scroll area, this way the buttons will not overlay the code.

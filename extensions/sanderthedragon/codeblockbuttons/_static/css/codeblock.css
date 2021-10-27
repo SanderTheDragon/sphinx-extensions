@@ -19,14 +19,14 @@ div.cb-button {
     height: 32px;
 
     background-color: var(--color-code-background);
+
+    cursor: pointer;
 }
 
 /* Icon container */
 div.cb-button div.cb-icon {
     width: 100%;
     height: 100%;
-
-    cursor: pointer;
 }
 
 /* Color icon */
