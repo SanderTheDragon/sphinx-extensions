@@ -92,6 +92,10 @@ function addControls(element) {
                 target = target.parentElement;
             }
 
+            if (target == null) {
+                return;
+            }
+
             // Create a blob from the content of the code block, and then open it
             const id = target.getAttribute("data-view-id");
             const element = document.getElementById(id);

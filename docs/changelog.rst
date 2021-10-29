@@ -6,6 +6,11 @@
 Changelog
 #########
 
+========
+1.0.0rc1
+========
+Fixed a missing ``null`` check which caused the console to fill up with errors on every click.
+
 =======
 1.0.0b4
 =======
