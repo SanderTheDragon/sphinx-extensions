@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2021 SanderTheDragon <sanderthedragon@zoho.com>
+# SPDX-FileCopyrightText: 2021-2022 SanderTheDragon <sanderthedragon@zoho.com>
 #
 # SPDX-License-Identifier: MIT
 
@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / 'extensions'))
 
 # Sphinx settings
 author = 'SanderTheDragon'
-copyright = f'2021, SanderTheDragon'
+copyright = f'2021-2022, SanderTheDragon'
 project = f'SanderTheDragon\'s Sphinx Extensions'
 
 extensions = [
@@ -34,7 +34,7 @@ html_css_files = [ 'css/custom.css' ]
 autosectionlabel_prefix_document = True
 autosectionlabel_maxdepth = 3
 
-# Role settings
+# `mappedlinkrole` settings
 role_mapping_root = '/'
 if os.environ.get('GITLAB_CI', 'false').lower() == 'true':
     role_mapping_root = '/sphinx-extensions/'

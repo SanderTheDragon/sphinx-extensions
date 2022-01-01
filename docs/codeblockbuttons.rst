@@ -1,4 +1,4 @@
-.. SPDX-FileCopyrightText: 2021 SanderTheDragon <sanderthedragon@zoho.com>
+.. SPDX-FileCopyrightText: 2021-2022 SanderTheDragon <sanderthedragon@zoho.com>
 ..
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
@@ -12,9 +12,27 @@ Usage
 *****
 The extension can be enabled by adding ``sanderthedragon.codeblockbuttons`` to your extensions in :file:`conf.py`.
 
+*************
+Configuration
+*************
+
+==========
+cb_default
+==========
+``cb_default`` can be set to select the default buttons to show, it defaults to ``'cbd-all'``.
+Valid values are:
+
+- ``'cbd-all'``: show the copy and view buttons.
+- ``'cbd-copy'``: show the copy button only.
+- ``'cbd-view'``: show the view button only.
+- ``'cbd-none'``: show no buttons.
+
+Disabled buttons can be enabled for specific blocks by adding the ``cb-all``, ``cb-copy`` or ``cb-view`` classes.
+
 ********
 Examples
 ********
+These examples assume ``cb_default`` is ``'cbd-all'`` (or not defined).
 
 =============
 Copy and View
@@ -56,7 +74,7 @@ The copy button can be disabled by adding the ``cb-nocopy`` class.
 ==========
 No buttons
 ==========
-The copy button can be disabled by adding the ``cb-none`` class, or both ``cb-noview`` and ``cb-nocopy``.
+The view and copy buttons can be disabled by adding the ``cb-none`` class, or both ``cb-noview`` and ``cb-nocopy``.
 
 .. code-block:: rst
    :class: cb-none

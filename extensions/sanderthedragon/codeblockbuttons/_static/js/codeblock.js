@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2021 SanderTheDragon <sanderthedragon@zoho.com>
+ * SPDX-FileCopyrightText: 2021-2022 SanderTheDragon <sanderthedragon@zoho.com>
  *
  * SPDX-License-Identifier: MIT
  */
@@ -54,15 +54,33 @@ function setTooltip(element, text) {
 
 // Add controls to a code block
 function addControls(element) {
+    function hasClass(cls) {
+        return element.parentElement.classList.contains(cls);
+    }
+
     element.id = `_${generateID()}`;
+
+    // Force the default to start with `cbd-`
+    if (!cb_default.startsWith("cbd-")) {
+        // Add the modified default class
+        const modified = "cbd-" + cb_default.split("-").pop();
+        element.parentElement.classList.add(modified);
+    }
+    else {
+        // Add the default class
+        element.parentElement.classList.add(cb_default);
+    }
 
     // Add nothing to code blocks with the `cb-none` class
     if (element.parentElement.classList.contains("cb-none")) {
         return;
     }
 
-    // Add the copy button, if `cb-nocopy` is not defined
-    if (!element.parentElement.classList.contains("cb-nocopy")) {
+    // Add the copy button, if needed
+    if (((hasClass("cbd-none") || hasClass("cbd-copy"))
+            && (hasClass("cb-all") || hasClass("cb-copy")))
+        || ((hasClass("cbd-all") || hasClass("cbd-copy"))
+            && !hasClass("cb-nocopy"))) {
         let copyButton = document.createElement("div");
         copyButton.classList.add("cb-button");
         copyButton.id = "cb-copy";
@@ -74,8 +92,11 @@ function addControls(element) {
         element.appendChild(copyButton);
     }
 
-    // Add the view button, if `cb-noview` is not defined
-    if (!element.parentElement.classList.contains("cb-noview")) {
+    // Add the view button, if needed
+    if (((hasClass("cbd-none") || hasClass("cbd-copy"))
+            && (hasClass("cb-all") || hasClass("cb-view")))
+        || ((hasClass("cbd-all") || hasClass("cbd-view"))
+            && !hasClass("cb-noview"))) {
         let viewButton = document.createElement("div");
         viewButton.classList.add("cb-button");
         viewButton.id = "cb-view";
