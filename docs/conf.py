@@ -45,6 +45,7 @@ role_mapping = {
 
     'license': 'https://spdx.org/licenses/{}.html',
     'wikipedia': 'https://en.wikipedia.org/wiki/{}',
+    'cppreference': 'https://en.cppreference.com/w/cpp/{}',
 
     'extern': None
 }
@@ -58,6 +59,10 @@ extension_mapping = {
 wikipedia_mapping = {
     'Sphinx': 'Sphinx_(documentation_generator)',
     '!Sphinx': 'Sphinx'
+}
+
+cppreference_mapping = {
+    'std::vector': 'container/vector'
 }
 
 extern_mapping = {

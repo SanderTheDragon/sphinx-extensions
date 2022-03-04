@@ -146,3 +146,28 @@ It is also possible to define an anchor for the URL, for instance with the Wikip
 .. note::
 
    Internal anchors will automatically be converted to :extern:`Sphinx` identifiers.
+
+============
+Special Case
+============
+Since the ``:`` is used to split key and anchor, it will cause problem if your text has a ``:`` in it.
+Like when referencing C++ classes or functions.
+
+.. code-block:: rst
+   :class: cb-none
+
+   :cppreference:`std::vector` is a container type.
+
+:cppreference:`std::vector` is a container type.
+
+--------
+
+But that will turn into ``https://en.cppreference.com/w/cpp/std:#vector``.
+This can be fixed by adding ``<:>``.
+
+.. code-block:: rst
+   :class: cb-none
+
+   :cppreference:`std::vector <:>` is a container type.
+
+:cppreference:`std::vector <:>` is a container type.

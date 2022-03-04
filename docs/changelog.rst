@@ -7,6 +7,11 @@ Changelog
 #########
 
 *****
+1.0.1
+*****
+- Added *Special Case* to :extension:`Mapped Link Role`.
+
+*****
 1.0.0
 *****
 - Added the ``cb_default`` option to :extension:`Code Block Buttons`.

@@ -19,13 +19,14 @@ def make_link(name: str, rawtext: str, text: str, lineno: int, inliner: Inliner,
     anchor = None
 
     ( _, text, key ) = nodesutil.split_explicit_title(text)
-    if ':' in key:
-        ( key, anchor ) = key.split(':', maxsplit=1)
+    if ':' in key and key != ':':
+        ( key, anchor ) = key.rsplit(':', maxsplit=1)
 
-    if len(key) == 0:
+    no_key_anchor = (key == ':')
+    if len(key) == 0 or no_key_anchor:
         key = text
-        if ':' in key:
-            ( key, anchor ) = key.split(':', maxsplit=1)
+        if ':' in key and not no_key_anchor:
+            ( key, anchor ) = key.rsplit(':', maxsplit=1)
 
     # Get the URL
     value = mapping.get(key, None if target is None else key)
