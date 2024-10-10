@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2021-2022 SanderTheDragon <sanderthedragon@zoho.com>
+ * SPDX-FileCopyrightText: 2021-2024 SanderTheDragon <sanderthedragon@zoho.com>
  *
  * SPDX-License-Identifier: MIT
  */

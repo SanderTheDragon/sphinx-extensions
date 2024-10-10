@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2021-2022 SanderTheDragon <sanderthedragon@zoho.com>
+ * SPDX-FileCopyrightText: 2021-2024 SanderTheDragon <sanderthedragon@zoho.com>
  *
  * SPDX-License-Identifier: MIT
  */
@@ -24,4 +24,36 @@ table.codetable td {
 
 table.codetable td > div {
     margin: 0 !important;
+}
+
+/* Grayscale for unhovered icons */
+.grayscale > svg {
+    transition: filter 100ms ease-out;
+}
+
+.grayscale:not(:hover) > svg {
+    filter: grayscale(100%);
+}
+
+/* Transitions for some other elements */
+.back-to-top {
+    display: flex !important;
+
+    align-items: center;
+
+    pointer-events: none;
+}
+
+* > .headerlink,
+.back-to-top {
+    opacity: 0;
+
+    transition: opacity 50ms;
+}
+
+*:hover > .headerlink,
+.show-back-to-top .back-to-top {
+    opacity: 1;
+
+    pointer-events: unset;
 }
