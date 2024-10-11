@@ -1,16 +1,16 @@
 .. SPDX-FileCopyrightText: 2021-2024 SanderTheDragon <sanderthedragon@zoho.com>
-
+..
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 ##################
 Code Block Buttons
 ##################
-The *code block buttons* extension will add a copy and view button to all code blocks.
+The *code block buttons* extension will add a copy and/or view button to all code blocks.
 
 *****
 Usage
 *****
-The extension can be enabled by adding ``sanderthedragon.codeblockbuttons`` to your extensions in :file:`conf.py`.
+The extension can be enabled by adding :python:`'sanderthedragon.codeblockbuttons'` to the :python:`extensions` list in :file:`conf.py`.
 
 *************
 Configuration
@@ -19,25 +19,25 @@ Configuration
 ==========
 cb_default
 ==========
-``cb_default`` can be set to select the default buttons to show, it defaults to ``'cbd-all'``.
+:python:`cb_default` can be set to select the default buttons to show, it defaults to :python:`'cbd-copy'`.
 Valid values are:
 
-- ``'cbd-all'``: show the copy and view buttons.
-- ``'cbd-copy'``: show the copy button only.
-- ``'cbd-view'``: show the view button only.
-- ``'cbd-none'``: show no buttons.
+- :python:`'cbd-all'`: show the copy and view button.
+- :python:`'cbd-copy'`: show the copy button only.
+- :python:`'cbd-view'`: show the view button only.
+- :python:`'cbd-none'`: do not show either button.
 
-Disabled buttons can be enabled for specific blocks by adding the ``cb-all``, ``cb-copy`` or ``cb-view`` classes.
+Disabled buttons can be enabled for specific blocks by adding the :rst:`cb-all`, :rst:`cb-copy` or :rst:`cb-view` classes.
 
 ********
 Examples
 ********
-These examples assume ``cb_default`` is ``'cbd-all'`` (or not defined).
+These examples assume :python:`cb_default` is :python:`'cbd-all'`.
 
 =============
 Copy and View
 =============
-The copy and view buttons are enabled by default, so just create a ``code-block``, ``literalinclude`` or something similar.
+The copy and view buttons are enabled by default, so just create a :rst:`code-block`, :rst:`literalinclude` or something similar.
 
 .. code-block:: rst
 
@@ -48,7 +48,7 @@ The copy and view buttons are enabled by default, so just create a ``code-block`
 =========
 Copy only
 =========
-The view button can be disabled by adding the ``cb-noview`` class.
+The view button can be disabled by adding the :rst:`cb-noview` class.
 
 .. code-block:: rst
    :class: cb-noview
@@ -61,7 +61,7 @@ The view button can be disabled by adding the ``cb-noview`` class.
 =========
 View only
 =========
-The copy button can be disabled by adding the ``cb-nocopy`` class.
+The copy button can be disabled by adding the :rst:`cb-nocopy` class.
 
 .. code-block:: rst
    :class: cb-nocopy
@@ -74,7 +74,7 @@ The copy button can be disabled by adding the ``cb-nocopy`` class.
 ==========
 No buttons
 ==========
-The view and copy buttons can be disabled by adding the ``cb-none`` class, or both ``cb-noview`` and ``cb-nocopy``.
+The view and copy buttons can be disabled by adding the :rst:`cb-none` class, or both :rst:`cb-noview` and :rst:`cb-nocopy`.
 
 .. code-block:: rst
    :class: cb-none

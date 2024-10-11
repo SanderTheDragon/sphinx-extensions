@@ -19,6 +19,7 @@ extensions = [
     'sphinx.ext.autosectionlabel',
     'sanderthedragon.codeblockbuttons',
     'sanderthedragon.extralexers',
+    'sanderthedragon.inlinecodehighlight',
     'sanderthedragon.mappedlinkrole'
 ]
 
@@ -28,7 +29,7 @@ html_theme = 'furo'
 html_title = project
 
 html_static_path = [ '_static' ]
-html_css_files = [ 'css/custom.css' ]
+html_css_files = [ 'custom.css' ]
 html_theme_options = {
     'footer_icons': [
         {
@@ -63,6 +64,12 @@ html_show_sourcelink = False
 autosectionlabel_prefix_document = True
 autosectionlabel_maxdepth = 3
 
+# `codeblockbuttons` settings
+cb_default = 'cbd-all'
+
+# `inlinecodehighlight` settings
+inline_codes = [ 'bash', 'css', 'html', 'javascript', 'python', 'rst' ]
+
 # `mappedlinkrole` settings
 role_mapping_root = '/'
 if os.environ.get('GITLAB_CI', 'false').lower() == 'true':
@@ -82,6 +89,7 @@ role_mapping = {
 extension_mapping = {
     'Code Block Buttons': 'codeblockbuttons',
     'Extra Lexers': 'extralexers',
+    'Inline Code Highlight': 'inlinecodehighlight',
     'Mapped Link Role': 'mappedlinkrole'
 }
 
@@ -97,6 +105,7 @@ cppreference_mapping = {
 extern_mapping = {
     'clipboard.js': 'https://clipboardjs.com',
     'include-what-you-use': 'https://include-what-you-use.org',
+    'Pygments': 'https://pygments.org',
     'REUSE': 'https://reuse.software',
     'Sphinx': 'https://www.sphinx-doc.org',
     'Tabler Icons': 'https://tablericons.com'

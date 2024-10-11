@@ -6,6 +6,9 @@ from pygments.lexer import inherit
 from pygments.lexers.javascript import JavascriptLexer
 from pygments.token import Comment
 from sphinx.application import Sphinx
+from sphinx.util.typing import ExtensionMetadata
+
+import sanderthedragon as common
 
 
 class LLVMJSONLexer(JavascriptLexer):
@@ -26,7 +29,9 @@ class LLVMJSONLexer(JavascriptLexer):
     }
 
 
-def setup(app: Sphinx) -> None:
+def setup(app: Sphinx) -> ExtensionMetadata:
     for lexer in [ LLVMJSONLexer ]:
         for alias in [ lexer.name, *lexer.aliases ]:
             app.add_lexer(alias, lexer)
+
+    return { 'version': common.__version__, 'parallel_read_safe': True }

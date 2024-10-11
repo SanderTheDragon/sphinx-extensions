@@ -4,6 +4,7 @@
 
 """
 This file just contains the version for Hatch.
+It will also be used as extension version.
 """
 
-__version__ = '1.0.2'
+__version__ = '1.1.0'

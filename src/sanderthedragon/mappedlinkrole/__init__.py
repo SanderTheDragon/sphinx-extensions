@@ -6,15 +6,19 @@ from functools import partial
 from typing import Any, Optional
 
 from docutils.parsers.rst.states import Inliner
+from docutils.nodes import Node
 from docutils import nodes
 from sphinx.application import Sphinx
+from sphinx.util.typing import ExtensionMetadata
 from sphinx.util import logging, nodes as nodesutil
 
+import sanderthedragon as common
 
-def make_link(name: str, rawtext: str, text: str, lineno: int, inliner: Inliner,
+
+def make_link(name: str, raw: str, text: str, line: int, inliner: Inliner,
               options: dict[str, Any] = {}, content: list[str] = [],
-              target: Optional[str] = None, mapping: dict[str, str] = {}) \
-                  -> tuple[list[nodes.reference], list[nodes.reference]]:
+              mapping: dict[str, str] = {}, target: Optional[str] = None) \
+        -> tuple[list[Node], list[nodes.system_message]]:
     # Split text into text, key and anchor
     anchor = None
 
@@ -31,11 +35,12 @@ def make_link(name: str, rawtext: str, text: str, lineno: int, inliner: Inliner,
     # Get the URL
     value = mapping.get(key, None if target is None else key)
     if value is None:
-        error = inliner.reporter.error(f'"{key}" is not defined for "{name}"',
-                                       line=lineno)
+        error = inliner.reporter.error(
+            f'"{key}" is not defined for "{name}"', line=line
+        )
         problematic = inliner.problematic(rawtext, rawtext, error)
-        return ( [ problematic ], [ error ] )
 
+        return ( [ problematic ], [ error ] )
 
     url = value
     if target is not None:
@@ -48,14 +53,12 @@ def make_link(name: str, rawtext: str, text: str, lineno: int, inliner: Inliner,
 
         url += '#' + anchor
 
-    node = nodes.reference(rawtext, text, refuri=url)
+    node = nodes.reference(raw, text, refuri=url)
 
     return ( [ node ], [] )
 
 
-def setup(app: Sphinx) -> None:
-    """Register nodes and roles."""
-
+def setup(app: Sphinx) -> ExtensionMetadata:
     config = app.config._raw_config  # `raw_config` is available in setup
 
     role_mapping = config.get('role_mapping', {})
@@ -63,11 +66,13 @@ def setup(app: Sphinx) -> None:
         item_mapping = config.get(key + '_mapping', {})
         if value is None:
             if len(item_mapping.keys()) == 0:
-                logger = logging.getLogger('mappedlinkrole')
-                logger.warning(f'"{key}" is defined as `None`, but no mapping' \
-                                ' is defined')
+                logging.getLogger('mappedlinkrole').warning(
+                    f'"{key}" is defined as `None`, but no mapping is defined'
+                )
 
             app.add_role(key, partial(make_link, mapping=item_mapping))
         else:
             app.add_role(key, partial(make_link, mapping=item_mapping,
                                       target=value))
+
+    return { 'version': common.__version__, 'parallel_read_safe': True }

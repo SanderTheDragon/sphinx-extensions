@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Create an instance of `ClipboardJS` for `cb-button`s
-    const clipboard = new ClipboardJS("div.cb-button");
+    const clipboard = new ClipboardJS("div.cb-button#cb-copy");
 
     clipboard.on("success", function(event) {
         event.clearSelection();
