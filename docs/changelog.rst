@@ -10,8 +10,10 @@ Changelog
 1.1.0 - WIP
 ***********
 - Added new extension :extension:`Inline Code Highlight`.
-- :extension:`Code Block Buttons`:
+- Improved extension :extension:`Code Block Buttons`:
 
+  - Added option :extension:`cb_hidden <Code Block Buttons:cb_hidden>` to hide buttons by default.
+  - Added CSS transitions, which can be disabled with option :extension:`cb_transition <Code Block Buttons:cb_transition>`.
   - Changed default value of :extension:`cb_default <Code Block Buttons:cb_default>` to :python:`'cbd-copy'`.
   - Fixed view button icon changing to copy button.
   - Updated :extern:`clipboard.js` to 2.0.11.
@@ -27,7 +29,7 @@ Changelog
 ******************
 1.0.0 - 2022-01-01
 ******************
-- Added the :python:`cb_default` option to :extension:`Code Block Buttons`.
+- Added the :extension:`cb_default <Code Block Buttons:cb_default>` option to :extension:`Code Block Buttons`.
 - Fixed heading characters for the changelog.
 - Updated copyright years.
 

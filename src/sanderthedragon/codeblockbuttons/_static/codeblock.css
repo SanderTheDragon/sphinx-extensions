@@ -23,6 +23,17 @@ div.cb-button {
     cursor: pointer;
 }
 
+div.cbd-hidden div.cb-button,
+div.cb-hidden div.cb-button {
+    opacity: 0;
+}
+
+div.cbd-hidden:hover div.cb-button,
+div.cb-hidden:hover div.cb-button,
+div.cbd-hidden.cb-visible div.cb-button {
+    opacity: 1;
+}
+
 /* Icon container */
 div.cb-button div.cb-icon {
     width: 100%;
@@ -57,12 +68,14 @@ div.cb-button span.cb-tooltip {
 
     text-align: center;
 
-    visibility: hidden;
+    opacity: 0;
+
+    pointer-events: none;
 }
 
 /* Show tooltip when hovering over button (but not over tooltip) */
 div.cb-button:hover span.cb-tooltip:not(:hover) {
-    visibility: visible;
+    opacity: 1;
 }
 
 /* Positions of buttons */
@@ -87,4 +100,18 @@ span.cb-pad-1 {
 
 span.cb-pad-2 {
     width: calc((32px + 4px) * 2 + 4px);
+}
+
+/* Transitions */
+div.cb-transition.cbd-hidden div.cb-button,
+div.cb-transition.cb-hidden div.cb-button {
+    transition: opacity 100ms;
+}
+
+div.cb-transition div.cb-button div.cb-icon > svg {
+    transition: stroke 50ms;
+}
+
+div.cb-transition div.cb-button span.cb-tooltip {
+    transition: opacity 50ms;
 }

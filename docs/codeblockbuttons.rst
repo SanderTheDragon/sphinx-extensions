@@ -29,6 +29,23 @@ Valid values are:
 
 Disabled buttons can be enabled for specific blocks by adding the :rst:`cb-all`, :rst:`cb-copy` or :rst:`cb-view` classes.
 
+=========
+cb_hidden
+=========
+:python:`cb_hidden` can be set to :python:`True` to hide the buttons by default, they will then be shown when the user hovers over the code block.
+By default it is set to :python:`False`, which will make the buttons always visible.
+
+Hidden buttons can be shown for specific blocks by adding the :css:`cb-visible` class.
+Visible buttons can be hidden for specific blocks by adding the :css:`cb-hidden` class.
+
+=============
+cb_transition
+=============
+:python:`cb_transition` can be set to :python:`True` to enable CSS transitions, this is also the default setting.
+Setting it to :python:`False` will disable the CSS transitions.
+
+Transitions are implemented for icon color, tooltip opacity, and button opacity (if the buttons are hidden).
+
 ********
 Examples
 ********
@@ -83,6 +100,22 @@ The view and copy buttons can be disabled by adding the :rst:`cb-none` class, or
       :class: cb-none
 
       I have no buttons. :(
+
+--------
+
+==============
+Hidden buttons
+==============
+The buttons can be hidden until the user hovers over the code block, globally this can be set with the ``cb_hidden`` option.
+For a specific code block the buttons can be hidden by adding the ``cb-hidden`` class.
+
+.. code-block:: rst
+   :class: cb-hidden
+
+   .. code-block:: rst
+      :class: cb-hidden
+
+      My buttons are hidden until hovering.
 
 *********
 3rd Party

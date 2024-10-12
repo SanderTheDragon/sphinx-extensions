@@ -2,10 +2,11 @@
 #
 # SPDX-License-Identifier: MIT
 
+import json
+
 from pathlib import Path
 
 from sphinx.application import Sphinx
-from sphinx.config import Config
 from sphinx.util.typing import ExtensionMetadata
 from sphinx.util import fileutil
 
@@ -22,8 +23,13 @@ def add_js(app: Sphinx, path: Path) -> None:
 
 
 def add_js_option(app: Sphinx, option: str) -> None:
-    js = f'const {option} = "{app.config[option]}";'
-    app.add_js_file(None, body=js)
+    # Append it to a file, since adding it inline was adding it twice
+    filename = 'cb_options.js'
+    path = Path(app.builder.outdir) / '_static' / filename
+    with open(path, 'a', encoding='utf-8') as js_file:
+        js_file.write(f'const {option} = {json.dumps(app.config[option])};\n')
+
+    app.add_js_file(filename)
 
 
 def add_css(app: Sphinx, path: Path) -> None:
@@ -45,10 +51,14 @@ def add_static(app: Sphinx) -> None:
     add_js(app, Path('codeblock.js'))
 
     add_js_option(app, 'cb_default')
+    add_js_option(app, 'cb_hidden')
+    add_js_option(app, 'cb_transitions')
 
 
 def setup(app: Sphinx) -> ExtensionMetadata:
     app.add_config_value('cb_default', 'cbd-copy', 'html', [ str ])
+    app.add_config_value('cb_hidden', False, 'html', [ bool ])
+    app.add_config_value('cb_transitions', True, 'html', [ bool ])
 
     app.connect('builder-inited', add_static)
 
