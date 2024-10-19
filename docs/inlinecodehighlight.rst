@@ -19,7 +19,6 @@ The value can be set to either a :python:`dict` or a :python:`list`.
 With a :python:`dict`, the key defines name of the new role, and the value the highlight language, for example:
 
 .. code-block:: python
-   :class: cb-noview
 
    inline_codes = {
        'python': 'python',
@@ -30,7 +29,6 @@ With a :python:`dict`, the key defines name of the new role, and the value the h
 With a :python:`list`, the items define the highlight language, for example:
 
 .. code-block:: python
-   :class: cb-noview
 
    inline_codes = [ 'python', 'bash', 'javascript' ]
 

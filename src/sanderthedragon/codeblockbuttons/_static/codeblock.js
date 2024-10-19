@@ -130,16 +130,26 @@ const codeblock = {
                     return;
                 }
 
-                // Create a blob from the content and then open it
+                // Find the language from the classes for the mime type
+                let language = undefined;
                 const id = target.getAttribute("data-view-id");
                 const element = document.getElementById(id);
+                element.parentElement.classList.forEach((cls) => {
+                    if (!language && cls.startsWith("highlight-")) {
+                        language = cls.substr(cls.indexOf("-") + 1);
+                    }
+                });
+
+                const mimetype = cb_mimes[language] || "text/plain";
+
+                // Create a blob from the content and then open it
                 const data = element.querySelector("pre").innerText;
-                const file = new Blob([ data ], { type: "text/plain" });
+                const file = new Blob([ data ], { type: mimetype });
                 window.open(URL.createObjectURL(file));
             });
         }
 
-        // Make the scroll area large enough for the buttons to not overlay the code
+        // Make the scroll area large enough to not overlay the code
         const buttonCount = element.getElementsByClassName("cb-button").length;
         if (buttonCount > 0) {
             const position = element.innerHTML.indexOf('\n');

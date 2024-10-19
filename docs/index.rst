@@ -18,7 +18,6 @@ Installation
 The extensions can be installed with :program:`pip`.
 
 .. code-block:: sh
-   :class: cb-noview
 
    pip install sanderthedragon-sphinxext
 

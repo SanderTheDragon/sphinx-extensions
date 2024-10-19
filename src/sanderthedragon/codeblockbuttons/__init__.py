@@ -6,11 +6,29 @@ import json
 
 from pathlib import Path
 
+from docutils import nodes
+from pygments.lexers._mapping import LEXERS
 from sphinx.application import Sphinx
+from sphinx.builders import Builder
 from sphinx.util.typing import ExtensionMetadata
 from sphinx.util import fileutil
 
 import sanderthedragon as common
+
+
+def process_languages(app: Sphinx, doctree: nodes.document) -> None:
+    """
+    Extract the highlight languages from all code blocks in the doctree
+
+    If a language is not yet defined in the 'cb_mimes' option, then it will
+    automatically be selected from the pygments lexer mapping
+    """
+
+    for block in doctree.traverse(nodes.literal_block):
+        if block['language'] not in app.config['cb_mimes']:
+            for ( _, ( _, _, language, _, mimes ) ) in LEXERS.items():
+                if block['language'] in language and len(mimes) > 0:
+                    app.config['cb_mimes'][block['language']] = mimes[0]
 
 
 def add_js(app: Sphinx, path: Path) -> None:
@@ -41,7 +59,7 @@ def add_css(app: Sphinx, path: Path) -> None:
     app.add_css_file(str(path))
 
 
-def add_static(app: Sphinx) -> None:
+def add_static(app: Sphinx, builder: Builder) -> None:
     if app.builder.format != 'html':
         return
 
@@ -52,14 +70,22 @@ def add_static(app: Sphinx) -> None:
 
     add_js_option(app, 'cb_default')
     add_js_option(app, 'cb_hidden')
+    add_js_option(app, 'cb_mimes')
     add_js_option(app, 'cb_transitions')
 
 
 def setup(app: Sphinx) -> ExtensionMetadata:
+    # The default buttons to show
     app.add_config_value('cb_default', 'cbd-copy', 'html', [ str ])
+    # Whether the buttons are hidden by default
     app.add_config_value('cb_hidden', False, 'html', [ bool ])
+    # The mime types to use for the view button blobs
+    app.add_config_value('cb_mimes', {}, 'html', [ dict ])
+    # Whether CSS transitions are enabled
     app.add_config_value('cb_transitions', True, 'html', [ bool ])
 
-    app.connect('builder-inited', add_static)
+    app.connect('doctree-read', process_languages)
+
+    app.connect('write-started', add_static)
 
     return { 'version': common.__version__, 'parallel_read_safe': True }

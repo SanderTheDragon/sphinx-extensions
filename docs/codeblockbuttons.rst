@@ -27,7 +27,7 @@ Valid values are:
 - :python:`'cbd-view'`: show the view button only.
 - :python:`'cbd-none'`: do not show either button.
 
-Disabled buttons can be enabled for specific blocks by adding the :rst:`cb-all`, :rst:`cb-copy` or :rst:`cb-view` classes.
+Disabled buttons can be enabled for specific blocks by adding the :css:`cb-all`, :css:`cb-copy` or :css:`cb-view` classes.
 
 =========
 cb_hidden
@@ -37,6 +37,14 @@ By default it is set to :python:`False`, which will make the buttons always visi
 
 Hidden buttons can be shown for specific blocks by adding the :css:`cb-visible` class.
 Visible buttons can be hidden for specific blocks by adding the :css:`cb-hidden` class.
+
+========
+cb_mimes
+========
+:python:`cb_mimes` can be set to a :python:`dict` to map highlight languages to MIME types which will be used for the view buttons.
+The key should be the language as provided to a code block, the value should be the MIME type.
+In case a language is not mapped here, then it will automatically select the first one from the :extern:`Pygments` mapping.
+If there is no MIME type found in the :extern:`Pygments` mapping, then :python:`'text/plain'` will be used.
 
 =============
 cb_transition
@@ -49,49 +57,49 @@ Transitions are implemented for icon color, tooltip opacity, and button opacity 
 ********
 Examples
 ********
-These examples assume :python:`cb_default` is :python:`'cbd-all'`.
 
-=============
+================
+Button Selection
+================
+These examples assume :python:`cb_default` is :python:`'cbd-copy'`.
+
+Copy Only
+---------
+The copy button is enabled by default, so just create a :rst:`code-block`, :rst:`literalinclude`, or something similar.
+
+.. code-block:: rst
+
+   .. code-block:: rst
+
+      I have a copy button!
+
 Copy and View
-=============
-The copy and view buttons are enabled by default, so just create a :rst:`code-block`, :rst:`literalinclude` or something similar.
+-------------
+The view button can be enabled by adding the :css:`cb-view` class.
 
 .. code-block:: rst
+   :class: cb-view
 
    .. code-block:: rst
+      :class: cb-view
 
-      I have copy and view buttons!
+      I have copy and view buttons!!
 
-=========
-Copy only
-=========
-The view button can be disabled by adding the :rst:`cb-noview` class.
+View Only
+---------
+The copy button can then be disabled by adding the :css:`cb-nocopy` class.
 
 .. code-block:: rst
-   :class: cb-noview
+   :class: cb-view cb-nocopy
 
    .. code-block:: rst
-      :class: cb-noview
+      :class: cb-view cb-nocopy
 
-      I only have a copy button.
+      I have a view button!
 
-=========
-View only
-=========
-The copy button can be disabled by adding the :rst:`cb-nocopy` class.
-
-.. code-block:: rst
-   :class: cb-nocopy
-
-   .. code-block:: rst
-      :class: cb-nocopy
-
-      I only have a view button.
-
-==========
-No buttons
-==========
-The view and copy buttons can be disabled by adding the :rst:`cb-none` class, or both :rst:`cb-noview` and :rst:`cb-nocopy`.
+No Buttons
+----------
+The copy button can be disabled by adding the :css:`cb-nocopy` class, but if all buttons should be disabled, then :css:`cb-none` class can be used as well.
 
 .. code-block:: rst
    :class: cb-none
@@ -101,21 +109,52 @@ The view and copy buttons can be disabled by adding the :rst:`cb-none` class, or
 
       I have no buttons. :(
 
---------
-
-==============
-Hidden buttons
-==============
-The buttons can be hidden until the user hovers over the code block, globally this can be set with the ``cb_hidden`` option.
-For a specific code block the buttons can be hidden by adding the ``cb-hidden`` class.
+=============
+Button Hiding
+=============
+The buttons can be hidden until the user hovers over the code block, globally this can be set with the :python:`cb_hidden` option.
+For a specific code block the buttons can be hidden by adding the :css:`cb-hidden` class.
 
 .. code-block:: rst
-   :class: cb-hidden
+   :class: cb-all cb-hidden
 
    .. code-block:: rst
-      :class: cb-hidden
+      :class: cb-all cb-hidden
 
       My buttons are hidden until hovering.
+
+==========
+MIME Types
+==========
+It is possible to provide a MIME type based on the highlight language, with some MIME types the browser provides extra functionality when viewed.
+For instance with :rst:`HTML` the browser can render it if the MIME type is correct, just try the view button in the next code block.
+
+.. code-block:: html
+   :class: cb-view cb-nocopy
+
+   <h1>I will be rendered as <i>HTML</i>!</h1>
+
+Aliases
+-------
+By default the MIME types will be detected from the :extern:`Pygments` mapping, this can be overriden using the :extension:`cb_mimes option <Code Block Buttons:cb_mimes>`.
+If it is wished to be able to view :rst:`HTML` rendered and not rendered, then an alias for the lexer can be added.
+
+.. code-block:: python
+
+   from pygments.lexers.html import HtmlLexer
+   from sphinx.application import Sphinx
+
+   def setup(app: Sphinx) -> None:
+       app.add_lexer('raw_html', HtmlLexer)
+
+The :python:`setup` can be placed in :file:`conf.py`, from here it is possible to add aliases to existing :extern:`Pygments` lexers.
+In this example an alias for the :rst:`HTML` lexer called :rst:`raw_html` was added, which does not have a mapped MIME type.
+Any code block with :rst:`raw_html` as language will now have the view button show the plain HTML.
+
+.. code-block:: raw_html
+   :class: cb-view cb-nocopy
+
+   <h1>I will not be rendered as <i>HTML</i>.</h1>
 
 *********
 3rd Party

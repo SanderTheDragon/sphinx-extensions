@@ -7,6 +7,9 @@ import sys
 
 from pathlib import Path
 
+from pygments.lexers.html import HtmlLexer
+from sphinx.application import Sphinx
+
 
 sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
 
@@ -17,6 +20,7 @@ project = f'SanderTheDragon\'s Sphinx Extensions'
 
 extensions = [
     'sphinx.ext.autosectionlabel',
+
     'sanderthedragon.codeblockbuttons',
     'sanderthedragon.extralexers',
     'sanderthedragon.inlinecodehighlight',
@@ -64,9 +68,6 @@ html_show_sourcelink = False
 autosectionlabel_prefix_document = True
 autosectionlabel_maxdepth = 3
 
-# `codeblockbuttons` settings
-cb_default = 'cbd-all'
-
 # `inlinecodehighlight` settings
 inline_codes = [ 'bash', 'css', 'html', 'javascript', 'python', 'rst' ]
 
@@ -110,3 +111,7 @@ extern_mapping = {
     'Sphinx': 'https://www.sphinx-doc.org',
     'Tabler Icons': 'https://tablericons.com'
 }
+
+# Extra Sphinx setup
+def setup(app: Sphinx) -> None:
+    app.add_lexer('raw_html', HtmlLexer)

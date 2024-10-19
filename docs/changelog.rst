@@ -14,6 +14,7 @@ Changelog
 
   - Added option :extension:`cb_hidden <Code Block Buttons:cb_hidden>` to hide buttons by default.
   - Added CSS transitions, which can be disabled with option :extension:`cb_transition <Code Block Buttons:cb_transition>`.
+  - Added MIME type support for the view button, which can be configured using :extension:`cb_mimes <Code Block Buttons:cb_mimes>`.
   - Changed default value of :extension:`cb_default <Code Block Buttons:cb_default>` to :python:`'cbd-copy'`.
   - Fixed view button icon changing to copy button.
   - Updated :extern:`clipboard.js` to 2.0.11.
