@@ -70,6 +70,7 @@ def add_static(app: Sphinx, builder: Builder) -> None:
 
     add_js_option(app, 'cb_default')
     add_js_option(app, 'cb_hidden')
+    add_js_option(app, 'cb_icons')
     add_js_option(app, 'cb_mimes')
     add_js_option(app, 'cb_transitions')
 
@@ -79,6 +80,8 @@ def setup(app: Sphinx) -> ExtensionMetadata:
     app.add_config_value('cb_default', 'cbd-copy', 'html', [ str ])
     # Whether the buttons are hidden by default
     app.add_config_value('cb_hidden', False, 'html', [ bool ])
+    # Override icons for the buttons
+    app.add_config_value('cb_icons', {}, 'html', [ dict ])
     # The mime types to use for the view button blobs
     app.add_config_value('cb_mimes', {}, 'html', [ dict ])
     # Whether CSS transitions are enabled

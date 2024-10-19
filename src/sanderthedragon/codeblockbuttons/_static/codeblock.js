@@ -21,14 +21,14 @@ const codeblock = {
 
     // From "https://tablericons.com", licensed under MIT
     icons: {
-        "code":         "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uLXRhYmxlciBpY29uLXRhYmxlci1jb2RlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2U9IiMwMDAwMDAiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgPHBhdGggc3Ryb2tlPSJub25lIiBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+CiAgPHBvbHlsaW5lIHBvaW50cz0iNyA4IDMgMTIgNyAxNiIgLz4KICA8cG9seWxpbmUgcG9pbnRzPSIxNyA4IDIxIDEyIDE3IDE2IiAvPgogIDxsaW5lIHgxPSIxNCIgeTE9IjQiIHgyPSIxMCIgeTI9IjIwIiAvPgo8L3N2Zz4=",
+        "view":         "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uLXRhYmxlciBpY29uLXRhYmxlci1jb2RlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2U9IiMwMDAwMDAiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgPHBhdGggc3Ryb2tlPSJub25lIiBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+CiAgPHBvbHlsaW5lIHBvaW50cz0iNyA4IDMgMTIgNyAxNiIgLz4KICA8cG9seWxpbmUgcG9pbnRzPSIxNyA4IDIxIDEyIDE3IDE2IiAvPgogIDxsaW5lIHgxPSIxNCIgeTE9IjQiIHgyPSIxMCIgeTI9IjIwIiAvPgo8L3N2Zz4=",
         "copy":         "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uLXRhYmxlciBpY29uLXRhYmxlci1jb3B5IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2U9IiMwMDAwMDAiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgPHBhdGggc3Ryb2tlPSJub25lIiBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+CiAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIiByeD0iMiIgLz4KICA8cGF0aCBkPSJNMTYgOHYtMmEyIDIgMCAwIDAgLTIgLTJoLThhMiAyIDAgMCAwIC0yIDJ2OGEyIDIgMCAwIDAgMiAyaDIiIC8+Cjwvc3ZnPg==",
         "copy-error":   "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uLXRhYmxlciBpY29uLXRhYmxlci1jbGlwYm9hcmQteCIgdmlld0JveD0iMCAwIDI0IDI0IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlPSIjMDAwMDAwIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogIDxwYXRoIHN0cm9rZT0ibm9uZSIgZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPgogIDxwYXRoIGQ9Ik05IDVoLTJhMiAyIDAgMCAwIC0yIDJ2MTJhMiAyIDAgMCAwIDIgMmgxMGEyIDIgMCAwIDAgMiAtMnYtMTJhMiAyIDAgMCAwIC0yIC0yaC0yIiAvPgogIDxyZWN0IHg9IjkiIHk9IjMiIHdpZHRoPSI2IiBoZWlnaHQ9IjQiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0xMCAxMmw0IDRtMCAtNGwtNCA0IiAvPgo8L3N2Zz4=",
         "copy-success": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uLXRhYmxlciBpY29uLXRhYmxlci1jbGlwYm9hcmQtY2hlY2siIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzAwMDAwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8cGF0aCBzdHJva2U9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KICA8cGF0aCBkPSJNOSA1aC0yYTIgMiAwIDAgMCAtMiAydjEyYTIgMiAwIDAgMCAyIDJoMTBhMiAyIDAgMCAwIDIgLTJ2LTEyYTIgMiAwIDAgMCAtMiAtMmgtMiIgLz4KICA8cmVjdCB4PSI5IiB5PSIzIiB3aWR0aD0iNiIgaGVpZ2h0PSI0IiByeD0iMiIgLz4KICA8cGF0aCBkPSJNOSAxNGwyIDJsNCAtNCIgLz4KPC9zdmc+"
     },
 
-    // Set an SVG icon from base64
-    setSVG: (element, ico) => {
+    // Set a base64 encoded icon
+    setImage: (element, ico) => {
         let icon = element.querySelector(`:scope > div.cb-icon`);
         if (icon == null) {
             icon = document.createElement("div");
@@ -37,7 +37,7 @@ const codeblock = {
             element.appendChild(icon);
         }
 
-        icon.innerHTML = atob(codeblock.icons[ico]);
+        icon.innerHTML = atob(cb_icons[ico] || codeblock.icons[ico]);
     },
 
     // Set a tooltip
@@ -98,7 +98,7 @@ const codeblock = {
             copyButton.setAttribute("data-clipboard-target",
                                     `#${element.id} > pre`);
 
-            codeblock.setSVG(copyButton, "copy");
+            codeblock.setImage(copyButton, "copy");
             codeblock.setTooltip(copyButton, "Copy");
 
             element.appendChild(copyButton);
@@ -114,7 +114,7 @@ const codeblock = {
             viewButton.id = "cb-view";
             viewButton.setAttribute("data-view-id", element.id);
 
-            codeblock.setSVG(viewButton, "code");
+            codeblock.setImage(viewButton, "view");
             codeblock.setTooltip(viewButton, "View");
 
             element.appendChild(viewButton);
@@ -163,7 +163,7 @@ const codeblock = {
     // Reset the copy button from success (or error) to normal
     resetCopyOnLeave: (element) => {
         element.addEventListener("mouseleave", function _rc() {
-            codeblock.setSVG(element, "copy");
+            codeblock.setImage(element, "copy");
             setTimeout(() => {
                 codeblock.setTooltip(element, "Copy")
             }, 50); // After fade out
@@ -185,14 +185,14 @@ const codeblock = {
             event.clearSelection();
 
             const element = event.trigger;
-            codeblock.setSVG(element, "copy-success");
+            codeblock.setImage(element, "copy-success");
             codeblock.setTooltip(element, "Copied");
             codeblock.resetCopyOnLeave(element);
         });
 
         clipboard.on("error", (event) => {
             const element = event.trigger;
-            codeblock.setSVG(element, "copy-error");
+            codeblock.setImage(element, "copy-error");
             codeblock.setTooltip(element, "Failed");
             codeblock.resetCopyOnLeave(element);
         });

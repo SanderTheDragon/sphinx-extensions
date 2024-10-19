@@ -39,6 +39,13 @@ Hidden buttons can be shown for specific blocks by adding the :css:`cb-visible` 
 Visible buttons can be hidden for specific blocks by adding the :css:`cb-hidden` class.
 
 ========
+cb_icons
+========
+The default icons can be overriden using the :python:`cb_icons` option, which should be defined as a :python:`dict`.
+The key must be any of :python:`view`, :python:`copy`, :python:`copy-success`, or :python:`copy-error`, the value should be a base64 encoded SVG icon.
+It is also possible to use another format than SVG, in which case the value should be the HTML :html:`<img>` encoded as base64.
+
+========
 cb_mimes
 ========
 :python:`cb_mimes` can be set to a :python:`dict` to map highlight languages to MIME types which will be used for the view buttons.
@@ -127,7 +134,7 @@ For a specific code block the buttons can be hidden by adding the :css:`cb-hidde
 MIME Types
 ==========
 It is possible to provide a MIME type based on the highlight language, with some MIME types the browser provides extra functionality when viewed.
-For instance with :rst:`HTML` the browser can render it if the MIME type is correct, just try the view button in the next code block.
+For instance with HTML the browser can render it if the MIME type is correct, just try the view button in the next code block which uses the :rst:`html` language.
 
 .. code-block:: html
    :class: cb-view cb-nocopy
@@ -137,7 +144,7 @@ For instance with :rst:`HTML` the browser can render it if the MIME type is corr
 Aliases
 -------
 By default the MIME types will be detected from the :extern:`Pygments` mapping, this can be overriden using the :extension:`cb_mimes option <Code Block Buttons:cb_mimes>`.
-If it is wished to be able to view :rst:`HTML` rendered and not rendered, then an alias for the lexer can be added.
+If it is wished to be able to view HTML rendered and not rendered, then an alias for the lexer can be added.
 
 .. code-block:: python
 
@@ -148,7 +155,7 @@ If it is wished to be able to view :rst:`HTML` rendered and not rendered, then a
        app.add_lexer('raw_html', HtmlLexer)
 
 The :python:`setup` can be placed in :file:`conf.py`, from here it is possible to add aliases to existing :extern:`Pygments` lexers.
-In this example an alias for the :rst:`HTML` lexer called :rst:`raw_html` was added, which does not have a mapped MIME type.
+In this example an alias for the HTML lexer called :rst:`raw_html` was added, which does not have a mapped MIME type.
 Any code block with :rst:`raw_html` as language will now have the view button show the plain HTML.
 
 .. code-block:: raw_html

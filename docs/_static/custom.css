@@ -57,3 +57,13 @@ table.codetable td > div {
 
     pointer-events: unset;
 }
+
+.theme-toggle > svg {
+    color: var(--color-foreground-primary);
+
+    transition: color 50ms;
+}
+
+.theme-toggle:hover > svg {
+    color: var(--color-link);
+}
